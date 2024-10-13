@@ -15,7 +15,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          DemoApp-main
+          DemoApp-test
         </a>
       </header>
     </div>
