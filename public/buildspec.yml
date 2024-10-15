@@ -15,5 +15,6 @@ phases:
 
 artifacts:
   files:
+    - appspec.yml
     - '**/*'  # Include all files in the build output
   base-directory: build  # The output directory for the built files
