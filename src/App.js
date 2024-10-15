@@ -15,7 +15,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          DemoApp-teat1
+          DemoApp-teat2
         </a>
       </header>
     </div>
