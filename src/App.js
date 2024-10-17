@@ -15,7 +15,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          ReactPipeline
+          ReactPipeline-App
         </a>
       </header>
     </div>
