@@ -15,7 +15,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          ReactPipeline-App
+          Pipeline setup EC2
         </a>
       </header>
     </div>
