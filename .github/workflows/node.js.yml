@@ -1,31 +1,22 @@
-name: Node.js CI
+version: 0.2
 
-on:
-  push:
-    branches: [ "main" ]
-
-jobs:
+phases:
+  install:
+    runtime-versions:
+      nodejs: 22 # Specify your Node.js version
+    commands:
+      - echo "Installing dependencies"
+      - npm install
+      
   build:
+    commands:
+      - echo "Building the application"
+      - npm run build # This command should handle the embedded HTML in your JS
 
-    runs-on: self-hosted
-
-    strategy:
-      matrix:
-        node-version: [22.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
-    steps:
-    - uses: actions/checkout@v4
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v4
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: npm install
-    - run: npm run build
-
-    - name: Upload build artifacts
-      uses: actions/upload-artifact@v3
-      with:
-        name: build-artifacts
-        path: build/ # Directory where the React build output is located
+  post_build:
+    commands:
+      - echo "Build phase completed"
+      
+artifacts:
+  files:
+    - '**/*' # Include all files to ensure HTML in JS is handled
