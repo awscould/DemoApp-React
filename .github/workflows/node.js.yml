@@ -1,4 +1,5 @@
 name: Node.js CI
+
 on:
   push:
     branches: [ "main" ]
@@ -22,7 +23,3 @@ jobs:
         cache: 'npm'
     - run: npm i
     - run: npm run build
-      
-artifacts:
-  files:
-    - '**/*' # Include all files to ensure HTML in JS is handled
