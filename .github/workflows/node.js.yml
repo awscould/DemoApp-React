@@ -26,11 +26,9 @@ jobs:
         cache: 'npm'
     - run: npm i
     - run: npm run build
-    artifacts:
+    
+artifacts:
   files:
-    - public/**/*
-    - src/**/*
-    - package.json
-    - appspec.yml
-    - scripts/**/*
+    - '**/*' # Include all files in the build output
+  base-directory: build # Directory where React build output is located''
     
