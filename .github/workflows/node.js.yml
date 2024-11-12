@@ -1,17 +1,28 @@
-version: 0.2
+name: Node.js CI
 
-phases:
-  install:
-    runtime-versions:
-      nodejs: 18 # Specify your Node.js version
-    commands:
-      - echo "Installing dependencies"
-      - npm install
-      
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
   build:
-    commands:
-      - echo "Building the application"
-      - npm run build # This command should handle the embedded HTML in your JS
+
+    runs-on: self-hosted
+
+    strategy:
+      matrix:
+        node-version: [22.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    - run: npm i
+    - run: npm run build
 
   post_build:
     commands:
