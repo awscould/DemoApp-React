@@ -1,29 +1,31 @@
-version: 0.2
+name: Node.js CI
 
-phases:
-  install:
-    runtime-versions:
-      nodejs: 22 # Specify the Node.js version
-    commands:
-      - echo Installing dependencies...
-      - npm install
+on:
+  push:
+    branches: [ "main" ]
 
+jobs:
   build:
-    commands:
-      - echo Building the React app...
-      - npm run build # Runs the React build process
 
-  post_build:
-    commands:
-      - echo Build completed. Preparing for deployment...
-      # Zip the build folder for deployment (optional)
-      - zip -r build.zip build
+    runs-on: self-hosted
 
-artifacts:
-  files:
-    - '**/*' # Include all files in the build output
-  base-directory: build # Directory where React build output is located
+    strategy:
+      matrix:
+        node-version: [22.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
-cache:
-  paths:
-    - node_modules/**/* # Cache dependencies to speed up build times
+    steps:
+    - uses: actions/checkout@v4
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    - run: npm install
+    - run: npm run build
+
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: build-artifacts
+        path: build/ # Directory where the React build output is located
