@@ -1,5 +1,4 @@
 name: Node.js CI
-
 on:
   push:
     branches: [ "main" ]
@@ -23,10 +22,6 @@ jobs:
         cache: 'npm'
     - run: npm i
     - run: npm run build
-
-  post_build:
-    commands:
-      - echo "Build phase completed"
       
 artifacts:
   files:
