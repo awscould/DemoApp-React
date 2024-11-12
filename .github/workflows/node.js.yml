@@ -6,13 +6,11 @@ on:
 
 jobs:
   build:
-
     runs-on: self-hosted
 
     strategy:
       matrix:
         node-version: [22.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
     - uses: actions/checkout@v4
@@ -23,3 +21,10 @@ jobs:
         cache: 'npm'
     - run: npm i
     - run: npm run build
+    - name: List build directory
+      run: ls -R ./build  # Adjust this based on your build output folder
+    - name: Upload build artifacts (optional)
+      uses: actions/upload-artifact@v3
+      with:
+        name: build-artifacts
+        path: ./build  # Upload build artifacts for further inspection if needed
