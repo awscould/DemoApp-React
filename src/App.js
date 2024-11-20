@@ -15,7 +15,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          DemoServer123434frgrg
+          DevReactApp
         </a>
       </header>
     </div>
