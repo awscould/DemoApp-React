@@ -15,7 +15,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          TestingHost123
+          Hosting
         </a>
       </header>
     </div>
