@@ -15,7 +15,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          AWSCodePipeline
+          Pipeline_SetupDemo
         </a>
       </header>
     </div>
